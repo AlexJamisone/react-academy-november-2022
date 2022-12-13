@@ -19,7 +19,7 @@ const Game = () => {
 		[0, 4, 8],
 		[2, 4, 6],
 	];
-	const toast = useToast()
+	const toast = useToast();
 
 	const [game, setGame] = useState(initial_game);
 	const [currentPlayer, setCurrentPlayer] = useState('X');
@@ -40,15 +40,13 @@ const Game = () => {
 	}, [game]);
 
 	const hanndWin = () => {
-		const winner = currentPlayer === "X" ? 'cyan' : 'red'
 		toast({
 			position: 'top',
 			title: `Congratulations player: ${currentPlayer} won!`,
-			status: "success",
+			status: 'success',
 			duration: 5000,
 			isClosable: true,
-
-		})
+		});
 		const newPlayerScore = scores[currentPlayer] + 1;
 		const newScores = { ...scores };
 		newScores[currentPlayer] = newPlayerScore;
@@ -62,8 +60,8 @@ const Game = () => {
 			title: 'The Game in a Draw!',
 			status: 'warning',
 			duration: 5000,
-			isClosable: true
-		})
+			isClosable: true,
+		});
 		resetBoard();
 	};
 	const resetBoard = () => setGame(initial_game);
@@ -112,7 +110,7 @@ const Game = () => {
 	return (
 		<div className="h-full p-8 text-slate-800 bg-gray-800">
 			<h1 className="text-center text-5xl mb-4 text-white">
-				Tic Tac Toc Game
+				Tic Tac Toe Game
 			</h1>
 			<div className="flex flex-col-reverse justify-center items-center mb-10 text-slate-300">
 				<p className="text-xl mt-5">
