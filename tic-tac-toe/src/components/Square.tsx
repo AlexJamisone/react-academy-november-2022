@@ -7,12 +7,12 @@ interface SquareProps {
 }
 const Square = ({ player, index, onClick }: SquareProps) => {
 	const scale = player ? 'scale-100' : 'scale-0';
-	const textColor = player === 'X' ? 'text-yellow-200' : 'text-fuchsia-300';
+	const textColor = player === 'X' ? 'text-cyan-400' : 'text-red-400';
 	const hoverStyle = 'transition duration-500 hover:scale-105 transform';
 	return (
 		<div
 			data-index={index}
-			className={`h-36 border-solid border-4 border-slate-200 font-main text-7xl text-center flex justify-center items-center cursor-pointer ${hoverStyle}`}
+			className={`h-36 border-solid border-4 border-slate-200 font-game text-7xl text-center flex justify-center items-center cursor-pointer rounded-3xl ${hoverStyle}`}
 			{...{ onClick }}
 		>
 			<span

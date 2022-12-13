@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Square from './Square';
+import { useToast } from '@chakra-ui/react';
 
 interface Score {
 	[key: string]: number;
@@ -18,6 +19,7 @@ const Game = () => {
 		[0, 4, 8],
 		[2, 4, 6],
 	];
+	const toast = useToast()
 
 	const [game, setGame] = useState(initial_game);
 	const [currentPlayer, setCurrentPlayer] = useState('X');
@@ -31,14 +33,22 @@ const Game = () => {
 	}, []);
 
 	useEffect(() => {
-		if(game === initial_game) {
-			return
+		if (game === initial_game) {
+			return;
 		}
 		checkForWinner();
 	}, [game]);
 
 	const hanndWin = () => {
-		window.alert(`Congrad player ${currentPlayer}! Youre are the winner!`);
+		const winner = currentPlayer === "X" ? 'cyan' : 'red'
+		toast({
+			position: 'top',
+			title: `Congratulations player: ${currentPlayer} won!`,
+			status: "success",
+			duration: 5000,
+			isClosable: true,
+
+		})
 		const newPlayerScore = scores[currentPlayer] + 1;
 		const newScores = { ...scores };
 		newScores[currentPlayer] = newPlayerScore;
@@ -47,7 +57,13 @@ const Game = () => {
 		resetBoard();
 	};
 	const hanndDraw = () => {
-		window.alert('The game in a draw!');
+		toast({
+			position: 'top',
+			title: 'The Game in a Draw!',
+			status: 'warning',
+			duration: 5000,
+			isClosable: true
+		})
 		resetBoard();
 	};
 	const resetBoard = () => setGame(initial_game);
@@ -94,12 +110,23 @@ const Game = () => {
 		setGame(newValues);
 	};
 	return (
-		<div className="h-full p-8 text-slate-800 bg-gradient-to-r from-cyan-500 to-blue-500">
+		<div className="h-full p-8 text-slate-800 bg-gray-800">
 			<h1 className="text-center text-5xl mb-4 text-white">
 				Tic Tac Toc Game
 			</h1>
-			<div>
-				<div className="grid grid-cols-3 gap-3 mx-auto w-96">
+			<div className="flex flex-col-reverse justify-center items-center mb-10 text-slate-300">
+				<p className="text-xl mt-5">
+					Next Player: <span>{currentPlayer}</span>
+				</p>
+				<p>
+					Player X wins: <span>{scores['X']}</span>
+				</p>
+				<p>
+					Player O wins: <span>{scores['O']}</span>
+				</p>
+			</div>
+			<div className="flex flex-col justify-center items-center">
+				<div className="grid grid-cols-3 gap-3 mx-auto w-96 mb-10">
 					{game.map((player, index) => (
 						<Square
 							onClick={handlClick}
@@ -108,17 +135,12 @@ const Game = () => {
 						/>
 					))}
 				</div>
-				<div>
-					<p>
-						Next Player: <span>{currentPlayer}</span>
-					</p>
-					<p>
-						Player X wins: <span>{scores['X']}</span>
-					</p>
-					<p>
-						Player O wins: <span>{scores['O']}</span>
-					</p>
-				</div>
+				<button
+					className="py-3 px-8 font-medium bg-cyan-600 text-teal-50 border-0 hover:bg-cyan-500 hover:text-slate-500 transition-all duration-500 ease-in-out rounded-xl"
+					onClick={() => setGame(initial_game)}
+				>
+					Reset Game
+				</button>
 			</div>
 		</div>
 	);

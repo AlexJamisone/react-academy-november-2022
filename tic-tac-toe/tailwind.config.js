@@ -6,7 +6,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				main: ["Rubik Spray Paint", ...defaultTheme.fontFamily.sans]
+				game: ["Intern", ...defaultTheme.fontFamily.sans]
 			}
 		},
 	},
