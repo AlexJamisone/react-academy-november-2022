@@ -2,7 +2,8 @@
 ## Install
 
 ```
-$ git clone https://github.com/AlexJamisone/react-academy-november-2022/tree/master/tic-tac-toe
+$ git clone https://github.com/AlexJamisone/react-academy-november-2022
+$ cd /tic-tac-toe
 $ npm install
 ```
 ### Run App
