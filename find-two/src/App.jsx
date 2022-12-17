@@ -8,19 +8,19 @@ const App = () => {
 	const [findCards, setFindCards] = useState([]);
 	const [moves, setMoves] = useState(0);
 	const [gameOver, setgameOver] = useState(false);
-	
+
 	useEffect(() => {
 		initializeGame();
 	}, []);
 
 	useEffect(() => {
-		console.log(findCards)
+		console.log(findCards);
 		console.log(boardData);
-		if(findCards.length > 0 && findCards.length === boardData.length) {
-			setgameOver(true)
+		if (findCards.length > 0 && findCards.length === boardData.length) {
+			setgameOver(true);
 		}
-	}, [moves])
-	
+	}, [moves]);
+
 	const initializeGame = () => {
 		shuhhle();
 		setFlippedCards([]);
@@ -28,7 +28,7 @@ const App = () => {
 		setMoves(0);
 		setgameOver(false);
 	};
-	
+
 	const shuhhle = () => {
 		const shuffledCards = [...board_icons, ...board_icons]
 			.sort(() => Math.random() - 0.5)
@@ -50,7 +50,7 @@ const App = () => {
 			} else {
 				setFlippedCards([...flippedCards, index]);
 			}
-			setMoves(prev => prev + 1)
+			setMoves((prev) => prev + 1);
 		}
 	};
 
@@ -89,13 +89,15 @@ const App = () => {
 								>
 									{data}
 								</div>
-								<div className={`absolute left-0 top-0 w-full h-full bg-slate-200 ${found} transition-all rounded-full`}></div>
+								<div
+									className={`absolute left-0 top-0 w-full h-full bg-slate-200 ${found} transition-all rounded-full`}
+								></div>
 							</div>
 						);
 					})}
 				</div>
 			</div>
-			<div className='flex justify-center'>
+			<div className="flex justify-center">
 				<button
 					className="border py-2 px-4 rounded-full mt-10 hover:bg-slate-600 hover:text-slate-100 transition-all duration-300 disabled:bg-slate-400 disabled:text-slate-400"
 					onClick={() => initializeGame()}
