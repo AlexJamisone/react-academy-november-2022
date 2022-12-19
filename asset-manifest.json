@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-academy-november-2022/find-two/static/css/main.533fb4b5.css",
+    "main.js": "/react-academy-november-2022/find-two/static/js/main.d58865fb.js",
+    "index.html": "/react-academy-november-2022/find-two/index.html",
+    "main.533fb4b5.css.map": "/react-academy-november-2022/find-two/static/css/main.533fb4b5.css.map",
+    "main.d58865fb.js.map": "/react-academy-november-2022/find-two/static/js/main.d58865fb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.533fb4b5.css",
+    "static/js/main.d58865fb.js"
+  ]
+}
